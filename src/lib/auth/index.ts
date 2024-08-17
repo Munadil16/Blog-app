@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcrypt";
 import prisma from "@/db";
+import { SignInType, signInSchema } from "../schemas/signInSchema";
 
 type GoogleProviderOptions = {
   clientId: string;
@@ -27,11 +28,15 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials) return null;
-
-        const { email, password } = credentials;
-
         try {
+          const { success, error, data } = signInSchema.safeParse(credentials);
+
+          if (!success) {
+            throw new Error(error.errors[0].message);
+          }
+
+          const { email, password }: SignInType = data;
+
           const user = await prisma.user.findFirst({
             where: {
               email,
@@ -44,23 +49,27 @@ export const authOptions = {
             },
           });
 
-          if (!user) return null;
+          if (!user) {
+            throw new Error("User not found");
+          }
 
-          if (
-            user.password &&
-            (await bcrypt.compare(password, user.password))
-          ) {
+          if (!user.password) {
+            throw new Error("Try signing in from Google");
+          }
+
+          if (await bcrypt.compare(password, user.password)) {
             return {
               id: user.id.toString(),
               username: user.username,
               provider: user.provider,
               email,
             };
+          } else {
+            throw new Error("Incorrect password");
           }
-        } catch (error) {
-          console.error("Error during authentication: ", error);
+        } catch (error: any) {
+          throw new Error(error);
         }
-        return null;
       },
     }),
     GoogleProvider({
@@ -77,29 +86,30 @@ export const authOptions = {
   },
   callbacks: {
     async signIn({ user, account }) {
-      if (account?.provider === "google") {
-        const username = user.name ?? "";
-        const email = user.email ?? "";
-        const image = user.image ?? "";
-
-        const existingUser = await prisma.user.findFirst({
-          where: {
-            email,
-          },
-        });
-
-        if (!existingUser) {
-          await prisma.user.create({
-            data: {
-              username,
-              email,
-              provider: account?.provider,
-              image,
+      try {
+        if (account?.provider === "google") {
+          const existingUser = await prisma.user.findFirst({
+            where: {
+              email: user.email ?? "",
             },
           });
+
+          if (!existingUser) {
+            await prisma.user.create({
+              data: {
+                username: user.name ?? "",
+                email: user.email ?? "",
+                provider: account?.provider,
+                image: user.image ?? "",
+              },
+            });
+          }
         }
+        return true;
+      } catch (error) {
+        console.error(error);
+        return false;
       }
-      return true;
     },
 
     async session({ session, token }) {
