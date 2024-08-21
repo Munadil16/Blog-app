@@ -54,7 +54,7 @@ export const authOptions = {
           }
 
           if (!user.password) {
-            throw new Error("Try signing in from Google");
+            throw new Error("Try signing in with Google");
           }
 
           if (await bcrypt.compare(password, user.password)) {
