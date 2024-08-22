@@ -47,13 +47,16 @@ export default function SignUpComponent() {
     toast.loading("Loading...");
 
     await signIn("google", {
-      callbackUrl: "/",
+      callbackUrl: "/explore",
       redirect: false,
     });
   };
 
   return (
-    <main className="flex flex-col justify-center items-center gap-8 h-screen">
+    <main
+      style={{ maxHeight: `calc(100vh - 64px)` }}
+      className="flex flex-col justify-center items-center gap-8 h-screen"
+    >
       <h1 className="text-3xl font-semibold">Create an account</h1>
 
       <form

@@ -34,7 +34,7 @@ export default function SignIn() {
       toast.success("Signing in...", {
         duration: 2000,
       });
-      router.push("/");
+      router.push("/explore");
     }
   };
 
@@ -43,13 +43,16 @@ export default function SignIn() {
     toast.loading("Loading...");
 
     await signIn("google", {
-      callbackUrl: "/",
+      callbackUrl: "/explore",
       redirect: false,
     });
   };
 
   return (
-    <main className="flex flex-col justify-center items-center gap-8 h-screen">
+    <main
+      style={{ maxHeight: `calc(100vh - 64px)` }}
+      className="flex flex-col justify-center items-center gap-8 h-screen"
+    >
       <h1 className="text-3xl font-semibold">Sign in to your account</h1>
 
       <form
