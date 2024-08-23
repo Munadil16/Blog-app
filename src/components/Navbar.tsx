@@ -10,7 +10,7 @@ export default function Navbar() {
   const { data, status } = useSession();
 
   return (
-    <nav className="sticky top-0 z-50 h-16 w-full flex items-center justify-between p-4 border-b">
+    <nav className="sticky top-0 z-50 h-16 w-full flex items-center justify-between p-4 border-b bg-white dark:bg-zinc-950">
       <p className="font-medium text-xl">Blog App</p>
 
       <ul className="flex items-center gap-4 md:gap-6">
@@ -20,7 +20,7 @@ export default function Navbar() {
           <>
             <li
               className="flex gap-2 cursor-pointer hover:text-neutral-400 select-none"
-              onClick={() => router.push("/create-blog")}
+              onClick={() => router.push("/user/create-blog")}
             >
               <PenBoxIcon /> Create
             </li>

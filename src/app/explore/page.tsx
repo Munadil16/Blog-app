@@ -16,6 +16,9 @@ export default async function Explore() {
         },
       },
     },
+    orderBy: {
+      id: "desc",
+    },
   });
 
   return (
