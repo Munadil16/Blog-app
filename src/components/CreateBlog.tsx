@@ -31,6 +31,8 @@ export default function CreateBlogComponent() {
       return toast.error("All fields are required");
     }
 
+    const toastId = toast.loading("Loading...");
+
     try {
       const res = await axios.post("/api/blog", {
         title,
@@ -39,10 +41,12 @@ export default function CreateBlogComponent() {
       });
 
       if (res.data.success) {
+        toast.dismiss(toastId);
         toast.success(res.data.message);
         router.push("/explore");
       }
     } catch (error: any) {
+      toast.dismiss(toastId);
       toast.error(error);
     }
   };
