@@ -11,7 +11,12 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 h-16 w-full flex items-center justify-between p-4 border-b bg-white dark:bg-zinc-950">
-      <p className="font-medium text-xl">Blog App</p>
+      <p
+        className="font-medium text-xl cursor-pointer"
+        onClick={() => router.push("/")}
+      >
+        Blog App
+      </p>
 
       <ul className="flex items-center gap-4 md:gap-6">
         <ThemeDropDown />
