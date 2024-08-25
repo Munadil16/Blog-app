@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { PenBoxIcon } from "lucide-react";
 import ThemeDropDown from "./ThemeDropDown";
+import ProfileIconDropDown from "./ProfileIconDropDown";
 
 export default function Navbar() {
   const router = useRouter();
@@ -30,17 +31,7 @@ export default function Navbar() {
               <PenBoxIcon /> Create
             </li>
 
-            <li>
-              {data?.user?.image !== undefined ? (
-                <img
-                  className="w-8 rounded-full cursor-pointer"
-                  src={data?.user?.image ?? ""}
-                  alt="Profile image"
-                />
-              ) : (
-                <p className="w-8 h-8 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 cursor-pointer"></p>
-              )}
-            </li>
+            <ProfileIconDropDown data={data} />
           </>
         ) : (
           <>

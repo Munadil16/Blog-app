@@ -50,7 +50,7 @@ export default function SignIn() {
 
   return (
     <main
-      style={{ maxHeight: `calc(100vh - 120px)` }}
+      style={{ maxHeight: `calc(100svh - 120px)` }}
       className="flex flex-col justify-center items-center gap-8 h-screen"
     >
       <h1 className="text-3xl font-semibold">Sign in to your account</h1>
