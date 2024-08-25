@@ -60,8 +60,7 @@ export const authOptions = {
           if (await bcrypt.compare(password, user.password)) {
             return {
               id: user.id.toString(),
-              username: user.username,
-              provider: user.provider,
+              name: user.username,
               email,
             };
           } else {

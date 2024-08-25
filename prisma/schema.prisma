@@ -9,13 +9,14 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  username String
-  email    String  @unique
-  password String?
-  provider String
-  image    String?
-  blog     Blog[]
+  id        Int      @id @default(autoincrement())
+  username  String
+  email     String   @unique
+  password  String?
+  provider  String
+  image     String?
+  createdAt DateTime @default(now())
+  blog      Blog[]
 }
 
 model Blog {

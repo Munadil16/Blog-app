@@ -23,7 +23,7 @@ export default async function Explore() {
 
   return (
     <main className="flex justify-center">
-      <section className="w-dvw md:w-[70vw] xl:w-[50vw]">
+      <section className="w-dvw md:w-[70vw] xl:w-[50vw] min-h-[80svh]">
         {blogs.map((blog) => (
           <Blog key={blog.id} blog={blog} />
         ))}
