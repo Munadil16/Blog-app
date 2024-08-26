@@ -102,7 +102,7 @@ export default function SignIn() {
         </Button>
 
         <p className="text-center text-sm text-neutral-500">
-          Don't have an account?
+          Don&apos;t have an account?
           <Button
             type="button"
             variant="link"
