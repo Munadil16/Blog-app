@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { toast } from "sonner";
+import Image from "next/image";
 import axios from "axios";
 
 export default function SignUpComponent() {
@@ -106,9 +107,10 @@ export default function SignUpComponent() {
           className="flex gap-4 w-full mt-4 py-6 text-base"
           onClick={handleGoogleSubmit}
         >
-          <img
-            className="w-6"
+          <Image
             src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000"
+            width={24}
+            height={24}
             alt="Google icon"
           />
           Continue with Google

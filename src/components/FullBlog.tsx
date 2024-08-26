@@ -1,3 +1,4 @@
+import Image from "next/image";
 import DOMPurify from "dompurify";
 import { JSDOM } from "jsdom";
 
@@ -31,9 +32,11 @@ export default function FullBlogComponent({
 
         <div className="flex items-center gap-6 border-b pb-10">
           {profile ? (
-            <img
-              className="w-10 h-10 rounded-full"
+            <Image
+              className="rounded-full"
               src={profile}
+              width={40}
+              height={40}
               alt="Profile image"
             />
           ) : (
@@ -70,7 +73,13 @@ export default function FullBlogComponent({
           className="leading-loose tracking-wider"
         ></div>
 
-        <img className="mb-10" src={image} alt="Blog post image" />
+        <Image
+          className="mb-10"
+          src={image}
+          alt="Blog post image"
+          width={1280}
+          height={720}
+        />
       </section>
     </main>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 interface UserProps {
@@ -36,9 +37,11 @@ export default function Blog({ blog }: { blog: BlogProps }) {
 
         <div className="flex items-center gap-2">
           {profile !== null ? (
-            <img
-              className="w-6 h-6 rounded-full"
+            <Image
+              className="rounded-full"
               src={profile}
+              width={24}
+              height={24}
               alt="Profile Image"
             />
           ) : (
@@ -62,9 +65,11 @@ export default function Blog({ blog }: { blog: BlogProps }) {
         )} min(s) read`}</p>
       </div>
 
-      <img
+      <Image
         className="w-20 h-20 md:h-auto md:w-32"
         src={image}
+        width={1280}
+        height={720}
         alt="Blog post image"
       />
     </article>
