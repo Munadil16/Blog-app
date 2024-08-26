@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import FullBlogComponent from "@/components/FullBlog";
 import prisma from "@/db";
 
@@ -23,6 +24,10 @@ export default async function FullBlog({
       },
     },
   });
+
+  if (!blogContent) {
+    notFound();
+  }
 
   return <FullBlogComponent blogContent={blogContent} />;
 }

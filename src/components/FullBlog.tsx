@@ -26,7 +26,7 @@ export default function FullBlogComponent({
 
   return (
     <main className="flex items-center justify-center">
-      <section className="flex flex-col gap-6 mt-4 w-[50vw]">
+      <section className="flex flex-col gap-6 mt-4 w-[90vw] md:w-[70vw] lg:w-[60vw] xl:w-[50vw]">
         <h1 className="text-4xl font-extrabold">{title}</h1>
 
         <div className="flex items-center gap-6 border-b pb-10">
