@@ -1,6 +1,8 @@
 import Blog from "@/components/Blog";
 import prisma from "@/db";
 
+export const dynamic = "force-dynamic";
+
 export default async function Explore() {
   const blogs = await prisma.blog.findMany({
     select: {
