@@ -3,8 +3,8 @@ import { BackgroundBeams } from "@/components/ui/background-beam";
 export default function Home() {
   return (
     <main
-      style={{ maxHeight: `calc(100svh - 120px)` }}
-      className="flex justify-center items-center h-screen"
+      style={{ minHeight: `calc(100svh - 120px)` }}
+      className="flex justify-center items-center"
     >
       <section className="flex flex-col items-center gap-6 w-[90%] sm:w-full">
         <h1 className="text-6xl font-semibold text-center">
