@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { Session } from "next-auth";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
@@ -17,7 +16,7 @@ export default function ProfileIconDropDown({ data }: { data: Session }) {
       <DropdownMenuTrigger asChild>
         <li>
           {data?.user?.image !== undefined ? (
-            <Image
+            <img
               className="rounded-full cursor-pointer"
               src={data?.user?.image ?? ""}
               width={32}
@@ -36,7 +35,7 @@ export default function ProfileIconDropDown({ data }: { data: Session }) {
           onClick={() => router.push("/user/profile")}
         >
           Profile
-          <Image
+          <img
             className="dark:invert"
             src="https://img.icons8.com/?size=100&id=2yC9SZKcXDdX&format=png&color=000000"
             width={20}
@@ -54,7 +53,7 @@ export default function ProfileIconDropDown({ data }: { data: Session }) {
           onClick={() => signOut()}
         >
           Logout
-          <Image
+          <img
             className="dark:invert"
             src="https://img.icons8.com/?size=100&id=BdksXmxLaK8r&format=png&color=000000"
             width={20}

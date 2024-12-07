@@ -1,9 +1,8 @@
+import prisma from "@/db";
+import Link from "next/link";
+import Blog from "@/components/Blog";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
-import Link from "next/link";
-import Image from "next/image";
-import prisma from "@/db";
-import Blog from "@/components/Blog";
 
 export default async function Profile() {
   const session = await getServerSession();
@@ -51,7 +50,7 @@ export default async function Profile() {
     <main className="flex flex-col justify-center items-center gap-8 pt-10">
       <section className="flex items-center gap-10 w-dvw md:w-[80vw] border-b pl-5 pb-10">
         {session.user.image ? (
-          <Image
+          <img
             className="rounded-full"
             src={session.user.image}
             width={112}

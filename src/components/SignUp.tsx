@@ -1,14 +1,13 @@
 "use client";
 
-import { FormEvent, MouseEvent, useState } from "react";
-import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
-import { toast } from "sonner";
-import Image from "next/image";
 import axios from "axios";
+import { toast } from "sonner";
+import { Label } from "./ui/label";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { FormEvent, MouseEvent, useState } from "react";
 
 export default function SignUpComponent() {
   const router = useRouter();
@@ -107,7 +106,7 @@ export default function SignUpComponent() {
           className="flex gap-4 w-full mt-4 py-6 text-base"
           onClick={handleGoogleSubmit}
         >
-          <Image
+          <img
             src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000"
             width={24}
             height={24}

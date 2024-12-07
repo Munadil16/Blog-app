@@ -1,6 +1,6 @@
-import Image from "next/image";
-import DOMPurify from "dompurify";
 import { JSDOM } from "jsdom";
+import DOMPurify from "dompurify";
+import { BackButton } from "./ui/BackButton";
 
 interface BlogProps {
   title: string;
@@ -28,11 +28,13 @@ export default function FullBlogComponent({
   return (
     <main className="flex items-center justify-center">
       <section className="flex flex-col gap-6 mt-4 w-[90vw] md:w-[70vw] lg:w-[60vw] xl:w-[50vw]">
+        <BackButton />
+
         <h1 className="text-4xl font-extrabold">{title}</h1>
 
         <div className="flex items-center gap-6 border-b pb-10">
           {profile ? (
-            <Image
+            <img
               className="rounded-full"
               src={profile}
               width={40}
@@ -73,13 +75,7 @@ export default function FullBlogComponent({
           className="leading-loose tracking-wider"
         ></div>
 
-        <Image
-          className="mb-10"
-          src={image}
-          alt="Blog post image"
-          width={1280}
-          height={720}
-        />
+        <img className="mb-10" src={image} alt="Blog post image" />
       </section>
     </main>
   );

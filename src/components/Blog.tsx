@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 interface UserProps {
@@ -29,7 +28,7 @@ export default function Blog({ blog }: { blog: BlogProps }) {
 
   return (
     <article
-      className="flex justify-between cursor-pointer border-b p-4"
+      className="flex justify-between items-center cursor-pointer border-b p-4"
       onClick={redirectToSpecificBlog}
     >
       <div className="flex flex-col gap-3">
@@ -37,12 +36,12 @@ export default function Blog({ blog }: { blog: BlogProps }) {
 
         <div className="flex items-center gap-2">
           {profile !== null ? (
-            <Image
+            <img
               className="rounded-full"
               src={profile}
               width={24}
               height={24}
-              alt="Profile Image"
+              alt="Profile image"
             />
           ) : (
             <p className="w-6 h-6 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></p>
@@ -65,13 +64,7 @@ export default function Blog({ blog }: { blog: BlogProps }) {
         )} min(s) read`}</p>
       </div>
 
-      <Image
-        className="w-20 h-20 md:h-auto md:w-32"
-        src={image}
-        width={1280}
-        height={720}
-        alt="Blog post image"
-      />
+      <img className="w-20 h-20 md:w-32" src={image} alt="Blog post image" />
     </article>
   );
 }

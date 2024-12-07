@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 h-16 w-full flex items-center justify-between p-4 border-b bg-white dark:bg-zinc-950">
       <p
-        className="font-medium text-xl cursor-pointer"
+        className="font-medium text-xl select-none cursor-pointer"
         onClick={() => router.push("/")}
       >
         Blog App
@@ -29,6 +29,13 @@ export default function Navbar() {
               onClick={() => router.push("/user/create-blog")}
             >
               <PenBoxIcon /> Create
+            </li>
+
+            <li
+              className="cursor-pointer hidden md:block hover:text-neutral-400 select-none"
+              onClick={() => router.push("/explore")}
+            >
+              Explore
             </li>
 
             <ProfileIconDropDown data={data} />
